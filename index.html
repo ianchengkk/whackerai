@@ -1,177 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.2">
-    <title>Whacker AI</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-	    background-color: #E6E6FA
-        }
-        h1 {
-            color: #4CAF50;
-        }
-	.button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            font-size: 16px;
-            color: white;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            text-align: center;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6549657787664471"
-     crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>whacker.ai · People whacking in Hong Kong</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#B8221A; --red-deep:#8E1710; --joss:#F4C531; --paper:#F3EBDD; --ink:#2A1512;
+  --bg:var(--red); --fg:var(--paper); --accent:var(--joss);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--red:#A31D16;--red-deep:#6F100B;}}
+:root[data-theme="dark"]{--red:#A31D16;--red-deep:#6F100B;}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.6 Archivo,system-ui,sans-serif}
+.zh{font-family:"Noto Serif TC","Songti TC",serif;font-weight:900}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--joss);outline-offset:3px}
+
+header.top{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-weight:800;font-size:20px;letter-spacing:.01em;text-decoration:none}
+.top a.pill{font-weight:600;font-size:15px;border:2px solid var(--joss);color:var(--joss);padding:6px 16px;border-radius:99px;text-decoration:none}
+
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:24px 0 72px}
+.hero h1{margin:0;font-size:clamp(96px,17vw,200px);line-height:.95;color:var(--joss);letter-spacing:-.02em}
+.hero p.lead{font-size:clamp(20px,2.4vw,26px);max-width:30ch;margin:20px 0 28px;line-height:1.35}
+.btn{display:inline-block;background:var(--joss);color:var(--ink);font-weight:800;padding:14px 26px;border-radius:6px;text-decoration:none;border:0;font-size:18px;cursor:pointer}
+.btn:hover{background:#fff}
+
+/* interactive villain */
+.stage{background:var(--red-deep);border-radius:10px;padding:20px 20px 16px;text-align:center;user-select:none}
+.stage button{all:unset;cursor:pointer;display:block;margin:0 auto;position:relative}
+.stage button:focus-visible{outline:3px solid var(--joss);outline-offset:6px}
+.villain{width:150px;height:auto;transform-origin:50% 90%}
+.hit .villain{animation:whack .28s}
+@keyframes whack{0%{transform:rotate(0) scaleY(1)}30%{transform:rotate(-9deg) scaleY(.9)}65%{transform:rotate(6deg) scaleY(1.03)}100%{transform:rotate(0)}}
+.pop{position:absolute;top:-4px;right:-34px;font-size:34px;color:var(--joss);opacity:0;pointer-events:none}
+.hit .pop{animation:pop .5s}
+@keyframes pop{0%{opacity:1;transform:translateY(8px) scale(.6)}100%{opacity:0;transform:translateY(-22px) scale(1.2)}}
+.count{margin:10px 0 2px;font-size:15px}
+.count b{font-size:30px;color:var(--joss);display:block;line-height:1.1}
+.msg{min-height:26px;font-size:15px;opacity:.9;margin:0}
+
+.zhp{font-family:"Noto Serif TC","Songti TC",serif;font-weight:700;line-height:1.7}
+.hero .zhp{font-size:clamp(18px,2vw,22px);margin:-12px 0 28px;color:var(--joss)}
+h2 .sub{display:block;font:700 .6em/1.3 "Noto Serif TC","Songti TC",serif;margin-top:6px;color:var(--paper)}
+.cta h2 .sub{color:var(--ink)}
+.facts .zhp{font-size:15px;margin:2px 0 0}
+ol.steps h3 .sub{display:block;font:700 15px/1.4 "Noto Serif TC",serif;opacity:.85}
+.mail{font-size:15px;margin:10px 0 0;text-align:center}
+.online{background:var(--red-deep);border-radius:14px;padding:40px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
+.online .big{font-size:clamp(64px,10vw,110px);line-height:1;color:var(--joss)}
+.online h2{margin-bottom:12px}
+.online p{margin:0 0 .8em;max-width:56ch}
+@media (max-width:820px){.online{grid-template-columns:1fr;padding:28px 24px;gap:12px}}
+section{padding:64px 0;border-top:2px solid rgba(244,197,49,.35)}
+h2{font-size:clamp(30px,4.4vw,48px);line-height:1.1;margin:0 0 20px;color:var(--joss)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.cols p{margin:0 0 1em;max-width:58ch}
+.facts{background:var(--paper);color:var(--ink);border-radius:10px;padding:24px 26px}
+.facts h3{margin:0 0 10px;font-size:22px;color:var(--red)}
+.facts dl{margin:0}.facts dt{font-weight:800;margin-top:12px}.facts dd{margin:0}
+
+ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+ol.steps li{counter-increment:s;background:var(--red-deep);padding:20px;border-radius:10px;border-top:6px solid var(--joss)}
+ol.steps li::before{content:counter(s);display:block;font:900 40px/1 "Noto Serif TC",serif;color:var(--joss);margin-bottom:8px}
+ol.steps h3{margin:0 0 6px;font-size:20px}
+ol.steps p{margin:0;font-size:16px;line-height:1.5}
+
+.cta{background:var(--joss);color:var(--ink);border-radius:14px;padding:48px 40px;display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:center}
+.cta h2{color:var(--red);margin:0 0 12px}
+.cta p{margin:0;max-width:46ch}
+.cta .btn{background:var(--red);color:var(--paper);text-align:center}
+.cta .btn:hover{background:var(--red-deep)}
+footer{padding:36px 0 48px;font-size:14px;opacity:.85}
+
+@media (max-width:820px){
+  .hero,.cols,.cta{grid-template-columns:1fr}
+  ol.steps{grid-template-columns:1fr 1fr}
+  .cta{padding:32px 24px}
+}
+@media (max-width:480px){ol.steps{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.hit .villain,.hit .pop{animation:none}}
+</style>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WMDRX5QE21"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WMDRX5QE21');
-</script>
 <body>
-    <h1>Hello, World! Welcome to Whacker AI. Big Success! #Whacker</h1>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#">whacker.ai</a>
+    <a class="pill" href="#contact">Get in touch</a>
+  </header>
 
-    <nav>
-        <a href="fpl.html" class="button">FPL Insights</a>
-        <a href="about.html" class="button">About</a>
- 	<a href="philosophy.html" class="button">Philosophy Insights</a>
-	<a href="stock.html" class="button">Stock Insights</a>
-    </nav>
+  <div class="hero">
+    <div>
+      <h1 class="zh" lang="zh-HK">打小人</h1>
+      <p class="lead">Hong Kong’s old ritual for shaking off the people who hold you back.</p>
+      <p class="zhp" lang="zh-HK">香港傳統民俗，為你打走小人、驅走霉運。</p>
+      <a class="btn" href="#contact">Ask for a taste · 預約體驗</a>
+    </div>
 
-<h2>Short Story: The Clockmaker’s Secret in Hong Kong</h2>
+    <div class="stage" aria-label="Try it yourself">
+      <button id="villain" type="button" aria-label="Whack the paper villain">
+        <svg class="villain" viewBox="0 0 150 210" role="img" aria-hidden="true">
+          <path d="M75 8c20 0 30 14 30 30 0 12-6 20-14 25 18 4 40 10 46 30l-26 6-2 32 12 62-28 8-18-52-18 52-28-8 12-62-2-32-26-6c6-20 28-26 46-30-8-5-14-13-14-25C45 22 55 8 75 8z" fill="#F3EBDD" stroke="#2A1512" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M60 34l10 6M90 34l-10 6" stroke="#2A1512" stroke-width="4" stroke-linecap="round"/>
+          <path d="M62 54q13-8 26 0" stroke="#B8221A" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="pop zh" aria-hidden="true">啪!</span>
+      </button>
+      <p class="count"><b id="n">0</b>whacks</p>
+      <p class="msg" id="msg" aria-live="polite">Tap the paper villain. Be firm.</p>
+    </div>
+  </div>
+</div>
 
-<p>In the bustling streets of Central Hong Kong, tucked between high-rise buildings and neon-lit shops, stood an old clock repair store called Timeless Wonders. Unlike the sleek boutiques around it, the shop had wooden shelves lined with timepieces of every kind—grandfather clocks, pocket watches, and wall-mounted pendulums. Its owner, a quiet old man named Mr. Lam, was a master clockmaker known for his craftsmanship and an aura of mystery.</p>
-<p> One humid evening, as the city buzzed with the chatter of markets and trams clanged on their tracks, a young woman named Mei stepped into the shop. She held a tarnished pocket watch, its golden surface dull, and its hands frozen at 3:15. "It belonged to my grandfather," she said softly, her voice tinged with nostalgia. "He always said it held a secret, but now it doesn’t even tell time." </p>
-<p> Mr. Lam took the watch from her, examining it with his meticulous eye. "Every clock carries a story," he said in a voice as smooth as silk. "Sometimes, those stories are more extraordinary than they seem." He promised Mei the watch would be ready in a week.</p>
-<p> That night, as rain pattered on the city’s narrow streets, Mr. Lam sat under the flickering light of his shop. As he dismantled the pocket watch, he discovered a hidden compartment in its mechanism. Inside was a slip of aged paper, folded tightly. The message read: To pause time, press the crown at exactly 3:15. </p>
-<p> Mr. Lam smiled, dismissing it as an old superstition. Yet, curiosity gnawed at him. The next evening, just as the nearby Star Ferry’s horn echoed across the harbor, he pressed the crown at precisely 3:15. </p>
-<p> The world froze. The shop’s ticking clocks fell silent, the neon lights outside flickered and froze mid-glow, and the raindrops on his window hung motionless like crystal beads. </p>
-<p> For a while, Mr. Lam wandered the stillness of Hong Kong. He strolled through the wet markets where fishmongers were caught mid-shout, and he stood on the Victoria Harbour waterfront, marveling at the frozen ripples in the water. The city, always alive and bustling, had become a silent masterpiece. </p>
-<p> As time resumed, Mr. Lam realized the power of the watch was as much a responsibility as it was a gift. Over the following nights, he used it sparingly. He stopped a vendor’s cart from rolling into traffic, placed a man’s forgotten wallet back on a tram seat, and removed a falling signboard before it could harm anyone. But he always remained discreet, letting life unfold naturally. </p>
-<p> When Mei returned a week later, the humid air filled with the scent of roasted chestnuts from a street vendor, Mr. Lam handed her the restored watch. "It’s more than just a timepiece," he said, his voice calm but weighted with meaning. "Use it wisely." </p>
-<p> Mei tilted her head, curious about his words, but she simply nodded. As she walked away, the city’s glow reflected in her eyes. </p>
-<p> Years passed, and Mr. Lam never saw Mei again. Yet sometimes, when he stood at his workbench and heard the hum of the city beyond his shop, he wondered. Perhaps, somewhere in the vibrant maze of Hong Kong, the pocket watch’s secret was shaping moments in ways only the watchbearer could understand. </p>
+<section>
+  <div class="wrap cols">
+    <div>
+      <h2>What is people whacking?<span class="sub" lang="zh-HK">甚麼是打小人？</span></h2>
+      <p class="zhp" lang="zh-HK">「小人」泛指暗中作對的人或事，例如背後中傷的同事、惹是生非的鄰居，或接連不斷的霉運。由打小人師傅手持舊鞋，拍打寫上名字的紙公仔，口中唸唸有詞，把晦氣趕走。打小人已列入香港非物質文化遺產清單。</p>
+      <p>Da siu yan (打小人), literally “hitting petty people,” is a Cantonese folk ritual. A “petty person” is anyone or anything working against you: a backstabbing colleague, a gossiping neighbour, a streak of bad luck.</p>
+      <p>You write the name of the villain on a paper figure, then a practitioner, usually called a villain hitter, beats it with an old shoe while chanting rhymes that send the bad energy packing. It is loud, theatrical, and surprisingly cathartic.</p>
+      <p>The practice is part of Hong Kong’s intangible cultural heritage inventory.</p>
+    </div>
+    <aside class="facts">
+      <h3>The essentials · 重點資料</h3>
+      <dl>
+        <dt>Where · 地點</dt><dd>Traditionally under the Canal Road Flyover at Goose Neck Bridge (鵝頸橋), between Wan Chai and Causeway Bay.</dd>
+        <dd class="zhp" lang="zh-HK">灣仔與銅鑼灣之間的鵝頸橋底。</dd>
+        <dt>When · 時間</dt><dd>Year-round, but busiest on Jingzhe (驚蟄), the “awakening of insects” in early March, when villains are said to stir.</dd>
+        <dd class="zhp" lang="zh-HK">全年皆可，驚蟄（約3月5日）前後最旺。</dd>
+        <dt>Who · 對象</dt><dd>Anyone. Locals, visitors, and the very curious.</dd>
+        <dd class="zhp" lang="zh-HK">任何人都可以：街坊、遊客，或單純好奇的你。</dd>
+      </dl>
+    </aside>
+  </div>
+</section>
 
-<h2>Visit our non-profit: <a href="https://www.spcc.edu.hk/" target="_blank">Link</a></h2>
+<section>
+  <div class="wrap">
+    <h2>How a session goes<span class="sub" lang="zh-HK">儀式流程</span></h2>
+    <ol class="steps">
+      <li><h3>Make offerings<span class="sub" lang="zh-HK">上香祭拜</span></h3><p>Incense, candles and paper money are offered to the gods to ask for their help.</p></li>
+      <li><h3>Name your villain<span class="sub" lang="zh-HK">寫下小人</span></h3><p>Their name, or your trouble, goes on a paper figure. No names? A generic villain works too.</p></li>
+      <li><h3>Whack<span class="sub" lang="zh-HK">拍打小人</span></h3><p>The practitioner strikes the figure with a shoe, chanting as it goes. You are welcome to join in.</p></li>
+      <li><h3>Burn it<span class="sub" lang="zh-HK">化寶送走</span></h3><p>The paper villain is burned, and the white tiger is soothed with pork fat so it won’t turn on you.</p></li>
+    </ol>
+  </div>
+</section>
 
-<canvas id="pong" width="800" height="400"></canvas>
+<section>
+  <div class="wrap">
+    <div class="online">
+      <div class="big zh" lang="zh-HK" aria-hidden="true">線上</div>
+      <div>
+        <h2>Can’t get to Hong Kong? We’ll whack online.<span class="sub" lang="zh-HK">未能親身到港？我們可以線上為你打小人。</span></h2>
+        <p>Distance is no excuse for keeping a villain around. Tell us who or what is troubling you, and whacker.ai will carry out the ritual for you online, wherever in the world you are.</p>
+        <p class="zhp" lang="zh-HK">無論身在何處，只要告訴我們你想打走的「小人」，whacker.ai 都可以透過線上為你代勞。</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        const canvas = document.getElementById('pong');
-        const context = canvas.getContext('2d');
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <h2>Want a taste of it?<span class="sub" lang="zh-HK">想親身體驗？</span></h2>
+        <p>Tell us who (or what) is on your list. We’ll help you find a session in Hong Kong, or do it for you online, and walk you through what to expect.</p>
+        <p class="zhp" lang="zh-HK" style="margin-top:10px">告訴我們你想打走的「小人」，可到香港現場體驗，亦可選擇線上進行，我們會為你安排並講解整個流程。</p>
+      </div>
+      <div><a class="btn" style="display:block" href="mailto:uk.hk.personalstatement@gmail.com?subject=I%20want%20to%20try%20people%20whacking%20%2F%20%E6%88%91%E6%83%B3%E9%AB%94%E9%A9%97%E6%89%93%E5%B0%8F%E4%BA%BA">聯絡我們 · Contact us</a><p class="mail"><a href="mailto:uk.hk.personalstatement@gmail.com">uk.hk.personalstatement@gmail.com</a></p></div>
+    </div>
+  </div>
+</section>
 
-        // Define Paddle and Ball properties
-        const paddleWidth = 10, paddleHeight = 100, ballSize = 10;
-        const player = { x: 0, y: canvas.height / 2 - paddleHeight / 2, score: 0 };
-        const computer = { x: canvas.width - paddleWidth, y: canvas.height / 2 - paddleHeight / 2, score: 0 };
-        const ball = { x: canvas.width / 2, y: canvas.height / 2, speedX: 4, speedY: 4 };
+<footer>
+  <div class="wrap">© whacker.ai · Villains not included. · 小人自備。</div>
+</footer>
 
-        // Draw elements on the canvas
-        function drawRect(x, y, width, height, color = '#fff') {
-            context.fillStyle = color;
-            context.fillRect(x, y, width, height);
-        }
-
-        function drawCircle(x, y, radius, color = '#fff') {
-            context.fillStyle = color;
-            context.beginPath();
-            context.arc(x, y, radius, 0, Math.PI * 2);
-            context.closePath();
-            context.fill();
-        }
-
-        function drawText(text, x, y, font = '20px Arial', color = '#fff') {
-            context.fillStyle = color;
-            context.font = font;
-            context.fillText(text, x, y);
-        }
-
-        function resetBall() {
-            ball.x = canvas.width / 2;
-            ball.y = canvas.height / 2;
-            ball.speedX *= -1;
-        }
-
-        // Main game loop
-        function update() {
-            // Ball movement
-            ball.x += ball.speedX;
-            ball.y += ball.speedY;
-
-            // Ball collision with top and bottom
-            if (ball.y + ballSize > canvas.height || ball.y - ballSize < 0) {
-                ball.speedY *= -1;
-            }
-
-            // Ball collision with paddles
-            if (
-                (ball.x < player.x + paddleWidth && ball.y > player.y && ball.y < player.y + paddleHeight) ||
-                (ball.x > computer.x - paddleWidth && ball.y > computer.y && ball.y < computer.y + paddleHeight)
-            ) {
-                ball.speedX *= -1;
-            }
-
-            // Ball out of bounds
-            if (ball.x < 0) {
-                computer.score++;
-                resetBall();
-            }
-            if (ball.x > canvas.width) {
-                player.score++;
-                resetBall();
-            }
-
-            // Computer AI
-            computer.y += (ball.y - (computer.y + paddleHeight / 2)) * 0.1;
-        }
-
-        function render() {
-            // Clear the canvas
-            drawRect(0, 0, canvas.width, canvas.height, '#222');
-
-            // Draw paddles and ball
-            drawRect(player.x, player.y, paddleWidth, paddleHeight);
-            drawRect(computer.x, computer.y, paddleWidth, paddleHeight);
-            drawCircle(ball.x, ball.y, ballSize);
-
-            // Draw the scores
-            drawText(player.score, canvas.width / 4, 30);
-            drawText(computer.score, (3 * canvas.width) / 4, 30);
-        }
-
-        function gameLoop() {
-            update();
-            render();
-            requestAnimationFrame(gameLoop);
-        }
-
-        // Player paddle movement
-        canvas.addEventListener('mousemove', event => {
-            const rect = canvas.getBoundingClientRect();
-            player.y = event.clientY - rect.top - paddleHeight / 2;
-        });
-
-        // Start the game loop
-        gameLoop();
-    </script>
-
-
+<script>
+(function(){
+  var n=0, el=document.getElementById('n'), btn=document.getElementById('villain'),
+      stage=btn.parentElement, msg=document.getElementById('msg');
+  var lines=["Again!","Harder. He deserves it.","Is that all you’ve got?","Feel that luck turning?","Now name a second villain.","Villain defeated. Enjoy the quiet."];
+  btn.addEventListener('click',function(){
+    n++; el.textContent=n;
+    stage.classList.remove('hit'); void stage.offsetWidth; stage.classList.add('hit');
+    msg.textContent = n>=12 ? lines[5] : lines[Math.min(Math.floor(n/2),4)];
+  });
+})();
+</script>
 </body>
 </html>
-
-
-
